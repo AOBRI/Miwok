@@ -2,6 +2,7 @@ package com.example.android.miwok;
 
 /**
  * Created by Ahmed on 022 22-03-2018.
+ * class representing a Word containing all translations of a single word.
  */
 
 public class Word extends Object {
