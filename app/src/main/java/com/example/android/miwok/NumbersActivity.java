@@ -44,7 +44,7 @@ public class NumbersActivity extends AppCompatActivity {
         LinearLayout linearLayout = findViewById(R.id.numbers_rootview);
         TextView textView;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < numberWords.size(); i++) {
             textView = new TextView(this);
             textView.setText(numberWords.get(i));
             linearLayout.addView(textView);
