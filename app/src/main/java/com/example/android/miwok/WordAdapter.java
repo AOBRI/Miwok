@@ -19,6 +19,7 @@ import java.util.List;
 public class WordAdapter extends ArrayAdapter<Word> {
 
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
+    private int mColorResourceId = R.color.tan_background;
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -28,12 +29,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
      * @param context   The current context. Used to inflate the layout file.
      * @param wordsList A List of AndroidFlavor objects to display in a list
      */
-    public WordAdapter(@NonNull Context context, @NonNull List<Word> wordsList) {
-        // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
-        // the second argument is used when the ArrayAdapter is populating a single TextView.
-        // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
-        // going to use this second argument, so it can be any value. Here, we used 0.
+    public WordAdapter(@NonNull Context context, @NonNull List<Word> wordsList, int colorResourceId) {
+        //the adapter is not going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, wordsList);
+        mColorResourceId = colorResourceId;
+
     }
 
     /**
@@ -55,19 +55,21 @@ public class WordAdapter extends ArrayAdapter<Word> {
                     R.layout.list_item, parent, false);
         }
 
+        listItemView.setBackgroundResource(mColorResourceId);
+
         // Get the {@link Word} object located at this position in the list
         Word currentWord = getItem(position);
-
-        TextView englishTextView = listItemView.findViewById(R.id.english_text_view);
-        englishTextView.setText(currentWord != null ? currentWord.getDefaultTranslation() : "No English word!");
 
         TextView numberTextView = listItemView.findViewById(R.id.miwok_text_view);
         numberTextView.setText(currentWord != null ? currentWord.getMiwokTranslation() : "No Miwok word!");
 
+        TextView englishTextView = listItemView.findViewById(R.id.english_text_view);
+        englishTextView.setText(currentWord != null ? currentWord.getDefaultTranslation() : "No English word!");
+
         ImageView iconView = listItemView.findViewById(R.id.helping_image_view);
-        if (currentWord != null && currentWord.getImageResourceId() != 0) {
-            iconView.setVisibility(View.VISIBLE);
+        if (currentWord != null && currentWord.hasImage()) {
             iconView.setImageResource(currentWord.getImageResourceId());
+            iconView.setVisibility(View.VISIBLE);
         } else {
             iconView.setVisibility(View.GONE);
         }

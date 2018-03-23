@@ -7,9 +7,11 @@ package com.example.android.miwok;
 
 public class Word extends Object {
 
+    private final int NO_IMAGE_PROVIDED = -1;
+
     private String mDefaultTranslation;
     private String mMiwokTranslation;
-    private int mImageResourceId;
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
 
 
     public Word(String defaultTranslation, String miwokTranslation) {
@@ -45,5 +47,9 @@ public class Word extends Object {
 
     public void setImageResourceId(int mImageResourceId) {
         this.mImageResourceId = mImageResourceId;
+    }
+
+    public boolean hasImage() {
+        return mImageResourceId != NO_IMAGE_PROVIDED;
     }
 }

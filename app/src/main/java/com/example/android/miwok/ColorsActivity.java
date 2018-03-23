@@ -30,16 +30,16 @@ public class ColorsActivity extends AppCompatActivity {
 
         // Create a list of words
         ArrayList<Word> colorWords = new ArrayList<>();
+        colorWords.add(new Word("Brown", "ṭakaakki", R.drawable.color_brown));
         colorWords.add(new Word("Red", "weṭeṭṭi", R.drawable.color_red));
         colorWords.add(new Word("Green", "chokokki", R.drawable.color_green));
-        colorWords.add(new Word("Brown", "ṭakaakki", R.drawable.color_brown));
+        colorWords.add(new Word("Mustard Yellow", "chiwiiṭә", R.drawable.color_mustard_yellow));
+        colorWords.add(new Word("Dusty Yellow ", "ṭopiisә", R.drawable.color_dusty_yellow));
+        colorWords.add(new Word("White", "kelelli", R.drawable.color_white));
         colorWords.add(new Word("Gray", "ṭopoppi", R.drawable.color_gray));
         colorWords.add(new Word("Black", "kululli", R.drawable.color_black));
-        colorWords.add(new Word("White", "kelelli", R.drawable.color_white));
-        colorWords.add(new Word("Dusty Yellow ", "ṭopiisә", R.drawable.color_dusty_yellow));
-        colorWords.add(new Word("Mustard Yellow", "chiwiiṭә", R.drawable.color_mustard_yellow));
 
-        WordAdapter adapter = new WordAdapter(this, colorWords);
+        WordAdapter adapter = new WordAdapter(this, colorWords, R.color.category_colors);
         ListView listView = findViewById(R.id.words_list_view);
         listView.setAdapter(adapter);
     }
