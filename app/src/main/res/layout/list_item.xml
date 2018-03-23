@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/category_numbers"
+    android:descendantFocusability="blocksDescendants"
     android:gravity="center_vertical"
     android:minHeight="@dimen/list_item_height"
     android:orientation="horizontal">
@@ -15,18 +15,17 @@
         android:background="@color/tan_background"
         android:contentDescription="@string/image_visualizing_the_word" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        android:id="@+id/word_parent_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@android:color/transparent"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/miwok_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +34,7 @@
             android:textStyle="bold"
             tools:text="lutti" />
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/english_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,12 +44,11 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/audio_image_button"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/button_to_play_the_translated_word"
+    <ImageView
+        android:id="@+id/audio_image_view"
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height"
+        android:scaleType="centerInside"
         android:src="@android:drawable/ic_media_play" />
 
 </LinearLayout>

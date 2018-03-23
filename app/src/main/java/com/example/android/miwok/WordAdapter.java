@@ -1,14 +1,14 @@
 package com.example.android.miwok;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
     private int mColorResourceId = R.color.tan_background;
-    private MediaPlayer mMediaPlayer;
+//    private MediaPlayer mMediaPlayer;
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -58,16 +58,8 @@ public class WordAdapter extends ArrayAdapter<Word> {
                     R.layout.list_item, parent, false);
         }
 
-        listItemView.setBackgroundResource(mColorResourceId);
-
         // Get the {@link Word} object located at this position in the list
         final Word currentWord = getItem(position);
-
-        TextView numberTextView = listItemView.findViewById(R.id.miwok_text_view);
-        numberTextView.setText(currentWord != null ? currentWord.getMiwokTranslation() : "No Miwok word!");
-
-        TextView englishTextView = listItemView.findViewById(R.id.english_text_view);
-        englishTextView.setText(currentWord != null ? currentWord.getDefaultTranslation() : "No English word!");
 
         ImageView iconView = listItemView.findViewById(R.id.helping_image_view);
         if (currentWord != null && currentWord.hasImage()) {
@@ -77,24 +69,17 @@ public class WordAdapter extends ArrayAdapter<Word> {
             iconView.setVisibility(View.GONE);
         }
 
-        ImageButton playButton = listItemView.findViewById(R.id.audio_image_button);
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mMediaPlayer != null) {
-                    mMediaPlayer.release();
-                }
-                if (currentWord != null) {
-                    mMediaPlayer = MediaPlayer.create(getContext().getApplicationContext(), currentWord.getAudioResourceId());
-                    mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mediaPlayer) {
-                            mediaPlayer.start();
-                        }
-                    });
-                }
-            }
-        });
+        LinearLayout wordLinearLayout = listItemView.findViewById(R.id.word_parent_layout);
+        wordLinearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
+
+        TextView numberTextView = listItemView.findViewById(R.id.miwok_text_view);
+        numberTextView.setText(currentWord != null ? currentWord.getMiwokTranslation() : "No Miwok word!");
+
+        TextView englishTextView = listItemView.findViewById(R.id.english_text_view);
+        englishTextView.setText(currentWord != null ? currentWord.getDefaultTranslation() : "No English word!");
+
+        ImageView playButton = listItemView.findViewById(R.id.audio_image_view);
+        playButton.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

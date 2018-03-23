@@ -15,13 +15,18 @@
  */
 package com.example.android.miwok;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
+
+    private MediaPlayer mMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +34,27 @@ public class PhrasesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_word_list);
 
         // Create a list of words
-        ArrayList<Word> phraseWords = new ArrayList<>();
-        phraseWords.add(new Word("Where are you going?", "minto wuksus", Word.NO_IMAGE_PROVIDED, R.raw.phrase_where_are_you_going));
-        phraseWords.add(new Word("What is your name?", "tinnә oyaase'nә", Word.NO_IMAGE_PROVIDED, R.raw.phrase_what_is_your_name));
-        phraseWords.add(new Word("My name is...", "oyaaset...", Word.NO_IMAGE_PROVIDED, R.raw.phrase_my_name_is));
-        phraseWords.add(new Word("How are you feeling?", "michәksәs?", Word.NO_IMAGE_PROVIDED, R.raw.phrase_how_are_you_feeling));
-        phraseWords.add(new Word("I’m feeling good.", "kuchi achit", Word.NO_IMAGE_PROVIDED, R.raw.phrase_im_feeling_good));
-        phraseWords.add(new Word("Are you coming?", "әәnәs'aa?", Word.NO_IMAGE_PROVIDED, R.raw.phrase_are_you_coming));
-        phraseWords.add(new Word("Yes, I’m coming.", "hәә’ әәnәm", Word.NO_IMAGE_PROVIDED, R.raw.phrase_yes_im_coming));
-        phraseWords.add(new Word("I’m coming.", "әәnәm", Word.NO_IMAGE_PROVIDED, R.raw.phrase_im_coming));
-        phraseWords.add(new Word("Let’s go.", "yoowutis", Word.NO_IMAGE_PROVIDED, R.raw.phrase_lets_go));
-        phraseWords.add(new Word("Come here.", "әnni'nem", Word.NO_IMAGE_PROVIDED, R.raw.phrase_come_here));
+        final ArrayList<Word> phraseWords = new ArrayList<>();
+        phraseWords.add(new Word("Where are you going?", "minto wuksus", R.raw.phrase_where_are_you_going));
+        phraseWords.add(new Word("What is your name?", "tinnә oyaase'nә", R.raw.phrase_what_is_your_name));
+        phraseWords.add(new Word("My name is...", "oyaaset...", R.raw.phrase_my_name_is));
+        phraseWords.add(new Word("How are you feeling?", "michәksәs?", R.raw.phrase_how_are_you_feeling));
+        phraseWords.add(new Word("I’m feeling good.", "kuchi achit", R.raw.phrase_im_feeling_good));
+        phraseWords.add(new Word("Are you coming?", "әәnәs'aa?", R.raw.phrase_are_you_coming));
+        phraseWords.add(new Word("Yes, I’m coming.", "hәә’ әәnәm", R.raw.phrase_yes_im_coming));
+        phraseWords.add(new Word("I’m coming.", "әәnәm", R.raw.phrase_im_coming));
+        phraseWords.add(new Word("Let’s go.", "yoowutis", R.raw.phrase_lets_go));
+        phraseWords.add(new Word("Come here.", "әnni'nem", R.raw.phrase_come_here));
 
         WordAdapter adapter = new WordAdapter(this, phraseWords, R.color.category_phrases);
         ListView listView = findViewById(R.id.words_list_view);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, phraseWords.get(i).getAudioResourceId());
+                mMediaPlayer.start();
+            }
+        });
     }
 }

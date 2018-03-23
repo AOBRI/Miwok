@@ -16,15 +16,10 @@ public class Word extends Object {
     private int mAudioResourceId = NO_AUDIO_PROVIDED;
 
 
-    public Word(String defaultTranslation, String miwokTranslation) {
-        this.mDefaultTranslation = defaultTranslation;
-        this.mMiwokTranslation = miwokTranslation;
-    }
-
-    public Word(String mDefaultTranslation, String mMiwokTranslation, int mImageResourceId) {
+    public Word(String mDefaultTranslation, String mMiwokTranslation, int mAudioResourceId) {
         this.mDefaultTranslation = mDefaultTranslation;
         this.mMiwokTranslation = mMiwokTranslation;
-        this.mImageResourceId = mImageResourceId;
+        this.mAudioResourceId = mAudioResourceId;
     }
 
     public Word(String mDefaultTranslation, String mMiwokTranslation, int mImageResourceId, int mAudioResourceId) {
