@@ -27,4 +27,6 @@
 
     <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
     <string name="category_family">Family Members</string>
+    <string name="button_to_play_the_translated_word">Button to play the translated word.</string>
+    <string name="image_visualizing_the_word">Image visualizing the word</string>
 </resources>
