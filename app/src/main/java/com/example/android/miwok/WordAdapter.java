@@ -65,7 +65,12 @@ public class WordAdapter extends ArrayAdapter<Word> {
         numberTextView.setText(currentWord != null ? currentWord.getMiwokTranslation() : "No Miwok word!");
 
         ImageView iconView = listItemView.findViewById(R.id.helping_image_view);
-        iconView.setImageResource(currentWord != null ? currentWord.getImageResourceId() : R.mipmap.ic_launcher);
+        if (currentWord != null && currentWord.getImageResourceId() != 0) {
+            iconView.setVisibility(View.VISIBLE);
+            iconView.setImageResource(currentWord.getImageResourceId());
+        } else {
+            iconView.setVisibility(View.GONE);
+        }
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
