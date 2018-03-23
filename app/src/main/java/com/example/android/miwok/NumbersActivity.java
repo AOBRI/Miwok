@@ -27,6 +27,12 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
 
     private MediaPlayer mMediaPlayer;
+    private MediaPlayer.OnCompletionListener mOnCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            releaseMediaPlayer();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,26 +52,16 @@ public class NumbersActivity extends AppCompatActivity {
         numberWords.add(new Word("nine", "wo’e", R.drawable.number_nine, R.raw.number_nine));
         numberWords.add(new Word("ten", "na’aacha", R.drawable.number_ten, R.raw.number_ten));
 
-        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
-        // adapter knows how to create list items for each item in the list.
         WordAdapter adapter = new WordAdapter(this, numberWords, R.color.category_numbers);
-
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // activity_word_list.xmlml layout file.
         ListView listView = findViewById(R.id.words_list_view);
-
-        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
-        // {@link ListView} will display list items for each {@link Word} in the list.
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (mMediaPlayer != null) {
-//                    mMediaPlayer.release();
-//                }
+                releaseMediaPlayer();
                 mMediaPlayer = MediaPlayer.create(NumbersActivity.this, numberWords.get(i).getAudioResourceId());
+                mMediaPlayer.setOnCompletionListener(mOnCompletionListener);
 //                mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 //                    @Override
 //                    public void onPrepared(MediaPlayer mediaPlayer) {
@@ -75,5 +71,17 @@ public class NumbersActivity extends AppCompatActivity {
 //            }
             }
         });
+
+    }
+
+    /**
+     * Clean up the media player by releasing its resources.
+     */
+    private void releaseMediaPlayer() {
+        // If the media player is not null, then it may be currently playing a sound.
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
     }
 }

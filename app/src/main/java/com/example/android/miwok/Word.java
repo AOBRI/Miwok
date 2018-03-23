@@ -29,6 +29,16 @@ public class Word extends Object {
         this.mAudioResourceId = mAudioResourceId;
     }
 
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mImageResourceId=" + mImageResourceId +
+                ", mAudioResourceId=" + mAudioResourceId +
+                '}';
+    }
+
     public int getAudioResourceId() {
         return mAudioResourceId;
     }
