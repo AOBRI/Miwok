@@ -9,10 +9,18 @@ public class Word extends Object {
 
     private String mDefaultTranslation;
     private String mMiwokTranslation;
+    private int mImageResourceId;
+
 
     public Word(String defaultTranslation, String miwokTranslation) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
+    }
+
+    public Word(String mDefaultTranslation, String mMiwokTranslation, int mImageResourceId) {
+        this.mDefaultTranslation = mDefaultTranslation;
+        this.mMiwokTranslation = mMiwokTranslation;
+        this.mImageResourceId = mImageResourceId;
     }
 
     public String getDefaultTranslation() {
@@ -29,5 +37,13 @@ public class Word extends Object {
 
     public void setMiwokTranslation(String mMiwokTranslation) {
         this.mMiwokTranslation = mMiwokTranslation;
+    }
+
+    public int getImageResourceId() {
+        return mImageResourceId;
+    }
+
+    public void setImageResourceId(int mImageResourceId) {
+        this.mImageResourceId = mImageResourceId;
     }
 }
