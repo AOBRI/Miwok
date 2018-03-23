@@ -30,16 +30,16 @@ public class NumbersActivity extends AppCompatActivity {
 
         // Create a list of words
         ArrayList<Word> numberWords = new ArrayList<>();
-        numberWords.add(new Word("one", "lutti", R.drawable.number_one));
-        numberWords.add(new Word("two", "otiiko", R.drawable.number_two));
-        numberWords.add(new Word("three", "tolookosu", R.drawable.number_three));
-        numberWords.add(new Word("four", "oyyisa", R.drawable.number_four));
-        numberWords.add(new Word("five", "massokka", R.drawable.number_five));
-        numberWords.add(new Word("six", "temmokka", R.drawable.number_six));
-        numberWords.add(new Word("seven", "kenekaku", R.drawable.number_seven));
-        numberWords.add(new Word("eight", "kawinta", R.drawable.number_eight));
-        numberWords.add(new Word("nine", "wo’e", R.drawable.number_nine));
-        numberWords.add(new Word("ten", "na’aacha", R.drawable.number_ten));
+        numberWords.add(new Word("one", "lutti", R.drawable.number_one, R.raw.number_one));
+        numberWords.add(new Word("two", "otiiko", R.drawable.number_two, R.raw.number_two));
+        numberWords.add(new Word("three", "tolookosu", R.drawable.number_three, R.raw.number_three));
+        numberWords.add(new Word("four", "oyyisa", R.drawable.number_four, R.raw.number_four));
+        numberWords.add(new Word("five", "massokka", R.drawable.number_five, R.raw.number_five));
+        numberWords.add(new Word("six", "temmokka", R.drawable.number_six, R.raw.number_six));
+        numberWords.add(new Word("seven", "kenekaku", R.drawable.number_seven, R.raw.number_seven));
+        numberWords.add(new Word("eight", "kawinta", R.drawable.number_eight, R.raw.number_eight));
+        numberWords.add(new Word("nine", "wo’e", R.drawable.number_nine, R.raw.number_nine));
+        numberWords.add(new Word("ten", "na’aacha", R.drawable.number_ten, R.raw.number_ten));
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.

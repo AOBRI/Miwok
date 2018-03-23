@@ -7,11 +7,13 @@ package com.example.android.miwok;
 
 public class Word extends Object {
 
-    private final int NO_IMAGE_PROVIDED = -1;
+    public static final int NO_IMAGE_PROVIDED = -1;
+    public static final int NO_AUDIO_PROVIDED = -1;
 
     private String mDefaultTranslation;
     private String mMiwokTranslation;
     private int mImageResourceId = NO_IMAGE_PROVIDED;
+    private int mAudioResourceId = NO_AUDIO_PROVIDED;
 
 
     public Word(String defaultTranslation, String miwokTranslation) {
@@ -23,6 +25,21 @@ public class Word extends Object {
         this.mDefaultTranslation = mDefaultTranslation;
         this.mMiwokTranslation = mMiwokTranslation;
         this.mImageResourceId = mImageResourceId;
+    }
+
+    public Word(String mDefaultTranslation, String mMiwokTranslation, int mImageResourceId, int mAudioResourceId) {
+        this.mDefaultTranslation = mDefaultTranslation;
+        this.mMiwokTranslation = mMiwokTranslation;
+        this.mImageResourceId = mImageResourceId;
+        this.mAudioResourceId = mAudioResourceId;
+    }
+
+    public int getAudioResourceId() {
+        return mAudioResourceId;
+    }
+
+    public void setAudioResourceId(int mAudioResourceId) {
+        this.mAudioResourceId = mAudioResourceId;
     }
 
     public String getDefaultTranslation() {
