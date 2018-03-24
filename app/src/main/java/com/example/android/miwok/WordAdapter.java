@@ -15,14 +15,13 @@ import java.util.List;
 
 /**
  * Created by Ahmed on 022 22-03-2018.
- * Handles a list of wWord objects into the appropriate layout.
+ * Handles a list of Word objects into the appropriate layout.
  */
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
     private int mColorResourceId = R.color.tan_background;
-//    private MediaPlayer mMediaPlayer;
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -50,7 +49,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
      */
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
@@ -63,12 +62,18 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         ImageView iconView = listItemView.findViewById(R.id.helping_image_view);
         if (currentWord != null && currentWord.hasImage()) {
+            // if the word contains an image resource id, set the image and make it visible.
+            // this is true for Numbers, Family and Colors activities.
             iconView.setImageResource(currentWord.getImageResourceId());
             iconView.setVisibility(View.VISIBLE);
         } else {
+            // in other cases ( when no the word does not have an image resource, make the iconView gone
+            // (not visible and does not take space).
             iconView.setVisibility(View.GONE);
         }
 
+        // set the background color of the wordLinearLayout within each item to the corresponding
+        // category color that the word belongs to.
         LinearLayout wordLinearLayout = listItemView.findViewById(R.id.word_parent_layout);
         wordLinearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
 
@@ -77,9 +82,6 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         TextView englishTextView = listItemView.findViewById(R.id.english_text_view);
         englishTextView.setText(currentWord != null ? currentWord.getDefaultTranslation() : "No English word!");
-
-        ImageView playButton = listItemView.findViewById(R.id.audio_image_view);
-        playButton.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

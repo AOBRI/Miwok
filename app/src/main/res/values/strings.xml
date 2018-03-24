@@ -29,4 +29,5 @@
     <string name="category_family">Family Members</string>
     <string name="button_to_play_the_translated_word">Button to play the translated word.</string>
     <string name="image_visualizing_the_word">Image visualizing the word</string>
+    <string name="image_that_indicates_clicking_will_play_a_sound">image that indicates clicking will play a sound.</string>
 </resources>
