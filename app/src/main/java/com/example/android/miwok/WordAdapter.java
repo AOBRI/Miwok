@@ -72,8 +72,9 @@ public class WordAdapter extends ArrayAdapter<Word> {
             iconView.setVisibility(View.GONE);
         }
 
-        // set the background color of the wordLinearLayout within each item to the corresponding
+        // set the background color of the Item Layout within each item to the corresponding
         // category color that the word belongs to.
+//        listItemView.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
         LinearLayout wordLinearLayout = listItemView.findViewById(R.id.word_parent_layout);
         wordLinearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
 
