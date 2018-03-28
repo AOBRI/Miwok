@@ -21,7 +21,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,40 +29,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NumbersActivity"
+            android:name=".activity.NumbersActivity"
             android:label="@string/category_numbers"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activity.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".FamilyActivity"
+            android:name=".activity.FamilyActivity"
             android:label="@string/category_family"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activity.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".ColorsActivity"
+            android:name=".activity.ColorsActivity"
             android:label="@string/category_colors"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activity.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".PhrasesActivity"
+            android:name=".activity.PhrasesActivity"
             android:label="@string/category_phrases"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activity.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
     </application>
 

@@ -21,7 +21,6 @@
         android:layout_alignTop="@id/helping_image_view"
         android:layout_toEndOf="@id/helping_image_view"
         android:layout_toRightOf="@id/helping_image_view"
-        android:background="@color/primary_color"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingLeft="16dp"

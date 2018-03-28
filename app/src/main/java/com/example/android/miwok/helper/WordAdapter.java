@@ -1,15 +1,16 @@
-package com.example.android.miwok;
+package com.example.android.miwok.helper;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.android.miwok.R;
+import com.example.android.miwok.model.Word;
 
 import java.util.List;
 
@@ -30,6 +31,16 @@ public class WordAdapter extends ArrayAdapter<Word> {
      *
      * @param context   The current context. Used to inflate the layout file.
      * @param wordsList A List of AndroidFlavor objects to display in a list
+     */
+    public WordAdapter(@NonNull Context context, @NonNull List<Word> wordsList) {
+        //the adapter is not going to use this second argument, so it can be any value. Here, we used 0.
+        super(context, 0, wordsList);
+    }
+
+    /**
+     * @param context         The current context. Used to inflate the layout file.
+     * @param wordsList       A List of Word objects to display in a list
+     * @param colorResourceId The color of the Word Category, used to set item colors.
      */
     public WordAdapter(@NonNull Context context, @NonNull List<Word> wordsList, int colorResourceId) {
         //the adapter is not going to use this second argument, so it can be any value. Here, we used 0.
@@ -73,14 +84,20 @@ public class WordAdapter extends ArrayAdapter<Word> {
         }
 
         // set the background color of the Item Layout within each item to the corresponding
-        // category color that the word belongs to.
+        // category color that the word belongs to. either use this with transparent background
+        // for the wordLinearLayout or use the other option.
 //        listItemView.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
-        LinearLayout wordLinearLayout = listItemView.findViewById(R.id.word_parent_layout);
-        wordLinearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
 
+        // get a reference to the Layout holding the word, translation and play image.
+//        LinearLayout wordLinearLayout = listItemView.findViewById(R.id.word_parent_layout);
+        // change the layout's background color to the specified activity category color.
+//        wordLinearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
+
+        // set the miwok text
         TextView numberTextView = listItemView.findViewById(R.id.miwok_text_view);
         numberTextView.setText(currentWord != null ? currentWord.getMiwokTranslation() : "No Miwok word!");
 
+        // set the default text
         TextView englishTextView = listItemView.findViewById(R.id.english_text_view);
         englishTextView.setText(currentWord != null ? currentWord.getDefaultTranslation() : "No English word!");
 
