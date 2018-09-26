@@ -1,4 +1,4 @@
-package com.example.android.miwok.helper;
+package com.example.android.miwok2.helper;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.miwok.R;
-import com.example.android.miwok.model.Word;
+import com.example.android.miwok2.R;
+import com.example.android.miwok2.model.Word;
 
 import java.util.List;
 
@@ -93,7 +93,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // change the layout's background color to the specified activity category color.
 //        wordLinearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), mColorResourceId));
 
-        // set the miwok text
+        // set the miwok2 text
         TextView numberTextView = listItemView.findViewById(R.id.miwok_text_view);
         numberTextView.setText(currentWord != null ? currentWord.getMiwokTranslation() : "No Miwok word!");
 

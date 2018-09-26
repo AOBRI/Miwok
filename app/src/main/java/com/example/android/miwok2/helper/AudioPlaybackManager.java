@@ -1,4 +1,4 @@
-package com.example.android.miwok.helper;
+package com.example.android.miwok2.helper;
 
 import android.content.Context;
 import android.media.AudioAttributes;
@@ -9,7 +9,7 @@ import android.os.Build;
 import android.os.Handler;
 
 /**
- * Handler for audio playback in the miwok app activities.
+ * Handler for audio playback in the miwok2 app activities.
  * Takes care of initializing media player and audio manager variables and listeners and retrieving required permissions for
  * audio focus and audio management.
  */

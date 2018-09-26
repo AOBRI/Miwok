@@ -1,44 +1,41 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package com.example.android.miwok.activity;
+package com.example.android.miwok2.fragment;
+
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.android.miwok.R;
-import com.example.android.miwok.helper.AudioPlaybackManager;
-import com.example.android.miwok.helper.WordAdapter;
-import com.example.android.miwok.model.Word;
+import com.example.android.miwok2.R;
+import com.example.android.miwok2.helper.AudioPlaybackManager;
+import com.example.android.miwok2.helper.WordAdapter;
+import com.example.android.miwok2.model.Word;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ColorsFragment extends Fragment {
 
-    private AudioPlaybackManager mAudioPlaybackManager;
+    AudioPlaybackManager mAudioPlaybackManager;
+
+
+    public ColorsFragment() {
+        // Required empty public constructor
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        mAudioPlaybackManager = new AudioPlaybackManager(this);
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
+
+        mAudioPlaybackManager = new AudioPlaybackManager(getActivity());
         mAudioPlaybackManager.initialize();
 
         // Create a list of words
@@ -52,8 +49,8 @@ public class ColorsActivity extends AppCompatActivity {
         colorWords.add(new Word("Gray", "ṭopoppi", R.drawable.color_gray, R.raw.color_gray));
         colorWords.add(new Word("Black", "kululli", R.drawable.color_black, R.raw.color_black));
 
-        WordAdapter adapter = new WordAdapter(this, colorWords);
-        ListView listView = findViewById(R.id.words_list_view);
+        WordAdapter adapter = new WordAdapter(getActivity(), colorWords);
+        ListView listView = rootView.findViewById(R.id.words_list_view);
         listView.setAdapter(adapter);
         listView.setBackgroundResource(R.color.category_colors);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,11 +59,14 @@ public class ColorsActivity extends AppCompatActivity {
                 mAudioPlaybackManager.playAudio(colorWords.get(i).getAudioResourceId());
             }
         });
+
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         mAudioPlaybackManager.releaseMediaPlayer();
     }
+
 }

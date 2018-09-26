@@ -14,7 +14,7 @@
 -->
 <resources>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name">Miwok</string>
+    <string name="app_name">Miwok 2</string>
 
     <!-- Category name for phrases [CHAR LIMIT=20] -->
     <string name="category_phrases">Phrases</string>
@@ -30,4 +30,7 @@
     <string name="button_to_play_the_translated_word">Button to play the translated word.</string>
     <string name="image_visualizing_the_word">Image visualizing the word</string>
     <string name="image_that_indicates_clicking_will_play_a_sound">image that indicates clicking will play a sound.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
